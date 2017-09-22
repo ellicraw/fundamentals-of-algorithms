@@ -3,10 +3,12 @@
 using namespace std;
 #define MAX_SIZE 101 
 
+void is_palindrome(string);
+
 class ArrayStack
 {
 private:
-    int Arr[MAX_SIZE]; 
+    char Arr[MAX_SIZE]; 
     int top;   
 public:
 	// constructor
@@ -15,7 +17,7 @@ public:
 		top = -1; 
 	}
 	// Insert an element on top of stack 
-	void Push(int x) 
+	void Push(char x) 
 	{
 	  if(top == MAX_SIZE -1) { 
 			cout << "Stack overflow!"<<  endl;
@@ -62,7 +64,7 @@ public:
 class QueueStack
 {
 private:
-	int Arr[MAX_SIZE];
+	char Arr[MAX_SIZE];
 	int front, rear; 
 public:
     // construtor 
@@ -89,7 +91,7 @@ public:
 	}
 
 	// Inserts an element in queue at rear end
-	void Enqueue(int x)
+	void Enqueue(char x)
 	{
 		cout<<"Enqueuing " << x << endl;
 		if(IsFull())
@@ -159,22 +161,23 @@ public:
 int main()
 {
 	// ArrayStack S; // Create instance of ArrayStack
-	// S.Push(2);S.Print();
-	// S.Push(5);S.Print();
-	// S.Push(10);S.Print();
+	// S.Push('o');S.Print();
+	// S.Push('s');S.Print();
+	// S.Push('k');S.Print();
 	// S.Pop();S.Print();
-    // S.Push(12);S.Print();
+    // S.Push('f');S.Print();
     // S.Len();
     // S.Pop(); 
     // S.Pop(); 
     // S.Pop(); 
     // S.Len();
 
-    QueueStack Q; // creating an instance of QueueStack. 
-    Q.Enqueue(2);  Q.Print();  
-    Q.Enqueue(4);  Q.Print();  
-    Q.Enqueue(6);  Q.Print();
-    Q.Dequeue();	  Q.Print();
-    Q.Enqueue(8);  Q.Print();
-    Q.Len();
+    // QueueStack Q; // creating an instance of QueueStack. 
+    // Q.Enqueue('b');  Q.Print();  
+    // Q.Enqueue('w');  Q.Print();  
+    // Q.Enqueue('b');  Q.Print();
+    // Q.Dequeue();	  Q.Print();
+    // Q.Enqueue('a');  Q.Print();
+    // Q.Len();
+
 }
