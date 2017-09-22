@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 #define MAX_SIZE 101 
 
-void is_palindrome(string);
+bool is_palindrome(string);
 
 class ArrayStack
 {
@@ -179,5 +180,37 @@ int main()
     // Q.Dequeue();	  Q.Print();
     // Q.Enqueue('a');  Q.Print();
     // Q.Len();
+    string word;
+    bool answer; 
+    cout << "Input a word and I will tell you if it's a palindrome ";
+    cin >> word;
+    answer = is_palindrome(word);
+    if (answer == true) {
+        cout << word << " is a palindrome";
+    } else {
+        cout << word << " is not a palindrome";
+    }
+}
 
+bool is_palindrome(string word)
+{
+    ArrayStack s;
+    int n = word.size();
+
+    for(int i = 0; i < n/2; i++)
+    {
+        s.Push(word[i]);
+    }
+
+    for(int i = (n+1)/2; i < n; i++)
+    {
+        if(s.Top() != word[i])
+        {
+            return false;
+        }
+
+        s.Pop();
+    }
+
+    return true;
 }
