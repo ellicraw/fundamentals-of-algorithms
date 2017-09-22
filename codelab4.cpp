@@ -14,7 +14,6 @@ public:
 	{
 		top = -1; 
 	}
-
 	// Insert an element on top of stack 
 	void Push(int x) 
 	{
@@ -24,7 +23,6 @@ public:
 		}
 		Arr[++top] = x;
 	}
- 
 	// Remove an element from top of stack
 	void Pop() 
 	{
@@ -34,14 +32,12 @@ public:
 		}
 		top--;
 	}
- 
 	// Returns the top of the stack
 	int Top() 
 	{
 		return Arr[top];
 	}
- 
-	// Return whether Stack is empty or not
+	// Return whether stack is empty or not
 	int IsEmpty()
 	{
 		if(top == -1){
@@ -49,8 +45,12 @@ public:
         } else {
             return false;
         }
-	}
-
+    }
+    // Returns the amount of elements in the stack
+    void Len() {
+        cout << "Amount of elements in stack: " << top + 1 << endl;
+    }
+    // Print stack
 	void Print() {
 		cout << "Stack: ";
 		for(int i = 0;i<=top;i++)
@@ -59,14 +59,122 @@ public:
     }
 };
 
+class QueueStack
+{
+private:
+	int Arr[MAX_SIZE];
+	int front, rear; 
+public:
+    // construtor 
+	QueueStack()
+	{
+		front = -1; 
+		rear = -1;
+	}
+
+	// Check wheter Queue is empty or not
+	bool IsEmpty()
+	{
+		return (front == -1 && rear == -1); 
+	}
+
+	// Check whether Queue is full or not
+	bool IsFull()
+	{
+        if ((rear+1)%MAX_SIZE == front) {
+            return true;
+        } else {
+            return false;
+        }
+	}
+
+	// Inserts an element in queue at rear end
+	void Enqueue(int x)
+	{
+		cout<<"Enqueuing " << x << endl;
+		if(IsFull())
+		{
+			cout<<"Error: Queue is Full" << endl;
+			return;
+		}
+		if (IsEmpty())
+		{ 
+			front = rear = 0; 
+		}
+		else
+		{
+		    rear = (rear+1)%MAX_SIZE;
+		}
+		Arr[rear] = x;
+	}
+
+	// Removes an element in Queue from front end. 
+	void Dequeue()
+	{
+		cout<<"Dequeuing " << endl;
+		if(IsEmpty())
+		{
+			cout<<"Error: Queue is Empty" << endl;
+			return;
+		}
+		else if(front == rear ) 
+		{
+			rear = front = -1;
+		}
+		else
+		{
+			front = (front+1)%MAX_SIZE;
+		}
+	}
+	// Returns element at front of queue. 
+	int First()
+	{
+		if(front == -1)
+		{
+			cout<<"Error: cannot return front from empty queue" << endl;
+			return -1; 
+		}
+		return Arr[front];
+    }
+    // Returns the amount of elements in the stack
+    void Len() {
+        int count = (rear+MAX_SIZE-front)%MAX_SIZE + 1;
+        cout << "Amount of elements in queue: " << count << endl;
+    }
+    // Print queue
+	void Print()
+	{
+		// Finding number of elements in queue  
+		int count = (rear+MAX_SIZE-front)%MAX_SIZE + 1;
+		cout<<"Queue: ";
+		for(int i = 0; i <count; i++)
+		{
+			int index = (front+i) % MAX_SIZE; 
+			cout<<Arr[index]<<" ";
+		}
+		cout<<"\n\n";
+	}
+};
+
 int main()
 {
-    // Code to test the implementation. 
-    // calling Print() after each push or pop to see the state of stack. 
-	ArrayStack S;
-	S.Push(2);S.Print();
-	S.Push(5);S.Print();
-	S.Push(10);S.Print();
-	S.Pop();S.Print();
-	S.Push(12);S.Print();
+	// ArrayStack S; // Create instance of ArrayStack
+	// S.Push(2);S.Print();
+	// S.Push(5);S.Print();
+	// S.Push(10);S.Print();
+	// S.Pop();S.Print();
+    // S.Push(12);S.Print();
+    // S.Len();
+    // S.Pop(); 
+    // S.Pop(); 
+    // S.Pop(); 
+    // S.Len();
+
+    QueueStack Q; // creating an instance of QueueStack. 
+    Q.Enqueue(2);  Q.Print();  
+    Q.Enqueue(4);  Q.Print();  
+    Q.Enqueue(6);  Q.Print();
+    Q.Dequeue();	  Q.Print();
+    Q.Enqueue(8);  Q.Print();
+    Q.Len();
 }
