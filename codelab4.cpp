@@ -5,7 +5,7 @@ using namespace std;
 #define MAX_SIZE 101 
 
 bool is_palindrome(string);
-
+string Remove_punct(string);
 class ArrayStack
 {
 private:
@@ -213,4 +213,9 @@ bool is_palindrome(string word)
     }
 
     return true;
+
+}
+
+string Remove_punct(string word) {
+
 }
