@@ -12,6 +12,8 @@
         "cstring": "cpp",
         "ctime": "cpp",
         "cwchar": "cpp",
-        "cwctype": "cpp"
+        "cwctype": "cpp",
+        "ios": "cpp",
+        "ostream": "cpp"
     }
 }
