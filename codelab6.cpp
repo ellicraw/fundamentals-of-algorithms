@@ -18,7 +18,7 @@ instream.open("infile.txt");
 outstream.open("DAT1.txt");
 cout << "Enter the maximum amount of characters in one line: ";
 cin >> max_chars;
-margins = 20;
+margins = 30;
 if (margins > 0) {
 max_chars = max_chars - margins;
 while (instream >> temp_word)
