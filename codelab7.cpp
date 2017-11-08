@@ -95,8 +95,38 @@ void path(Node* root) {
     all_root_to_leaves(root, path, 0);
 }
 //This is extra credit. Only turn it in after completing other questions
-void sumPath(Node* root, int k){
-    
+void printVector(const vector<int>& v, int i)
+{
+    for (int j=i; j<v.size(); j++)
+        cout << v[j] << " ";
+    cout << endl;
+}
+
+void printKPath(Node *root, vector<int>& path,
+    int k)
+{
+if (!root) {
+    return;
+}
+path.push_back(root->data);
+printKPath(root->left, path, k);
+printKPath(root->right, path, k);
+int f = 0;
+for (int j=path.size()-1; j>=0; j--)
+{
+f += path[j];
+
+if (f == k)
+printVector(path, j);
+}
+
+path.pop_back();
+}
+
+void sumPath(Node *root, int k)
+{
+vector<int> path;
+printKPath(root, path, k);
 }
 
 int main(){
@@ -120,9 +150,9 @@ int main(){
     // cout << endl;
 //     cout << "BFS Tree: " << endl;
 //    BFS_tree(root);
-cout << "All root to leaves: " << endl;
-   path(root);
-//    sumPath(root, 11);
+// cout << "All root to leaves: " << endl;
+//    path(root);
+sumPath(root, 11);
 }
 
 
